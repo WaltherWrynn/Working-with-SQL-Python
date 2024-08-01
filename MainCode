@@ -1,0 +1,23 @@
+import sqlite3
+import pandas as pd
+import matplotlib.pyplot as plt
+
+conn =sqlite3.connect('Data Bases/northwind.db')
+
+query ='''
+    SELECT Country,Count(*) as CustomerCount
+    FROM Customers
+    GROUP BY Country
+    ORDER BY CustomerCount DESC
+    LIMIT 10
+'''
+
+customer_countrys =pd.read_sql_query(query,conn)
+customer_countrys.plot(y='CustomerCount',kind='pie',figsize=(10,5),autopct ='%1.1f%%',labels=['']*customer_countrys.shape[0])
+
+plt.title('10 Countries with the most clients')
+plt.ylabel('')
+plt.legend(customer_countrys['Country'],title='Legend',loc='center left',bbox_to_anchor=(1, 0.5))
+plt.show()
+
+
