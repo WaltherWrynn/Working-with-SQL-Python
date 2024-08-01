@@ -1,0 +1,1 @@
+I used the northwind database to do real practices with the host language PYTHON. In the following example, based on the Customers table, I made a graph showing the 10 countries with the largest number of customers.
